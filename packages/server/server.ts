@@ -27,7 +27,6 @@ const corsOptions = {
         const whitelist = env.WHITELISTED_DOMAINS.split(",").map((d) =>
             d.trim()
         );
-
         if (!origin || whitelist.indexOf(origin) !== -1) {
             callback(null, true);
         } else {

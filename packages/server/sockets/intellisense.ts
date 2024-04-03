@@ -59,7 +59,7 @@ export function launch(socket: rpc.IWebSocket) {
     );
 
     // using https://github.com/python-lsp/python-lsp-server
-    const serverConnection = server.createServerProcess("JSON", env.PYLSP_PATH);
+    const serverConnection = server.createServerProcess("PYTHON", env.PYLSP_PATH);
 
     server.forward(socketConnection, serverConnection, (message) => {
         if (Message.isRequest(message)) {

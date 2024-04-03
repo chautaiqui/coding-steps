@@ -44,7 +44,7 @@ export function initPythonShell(server: http.Server) {
 
                 socket.on("python", async (data: any) => {
                     const code = `${CPU_LIMITER_CODE}\n${data.code}`;
-
+                    console.log('code', code);
                     if (data.type === "run") {
                         try {
                             fs.writeFileSync("main.py", code);
