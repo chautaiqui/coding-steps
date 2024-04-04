@@ -39,7 +39,7 @@ export function initLanguageService(server: http.Server) {
 
                     // launch the language-server when the web socket is opened
                     if (webSocket.readyState === webSocket.OPEN) {
-                        launch(socket);
+                        // launch(socket);
                     } else {
                         webSocket.on("open", () => launch(socket));
                     }

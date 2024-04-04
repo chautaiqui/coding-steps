@@ -261,7 +261,7 @@ MonacoServices.install(monaco);
 let webSocket: WebSocket;
 
 export function initLanguageClient() {
-    webSocket = new WebSocket(createUrl('0.0.0.0', 2087, ""));
+    webSocket = new WebSocket(createUrl('localhost', 2087, ""));
 
     webSocket.onopen = () => {
         const socket = toSocket(webSocket);

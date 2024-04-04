@@ -49,7 +49,6 @@ mongoose
                 saveUninitialized: false,
             })
         );
-
         app.use(compression());
         app.use(cookieParser(env.COOKIE_SECRET));
         app.use(passport.initialize());
@@ -62,6 +61,7 @@ mongoose
         app.use(
             bodyParser.urlencoded({
                 limit: "10mb",
+                extended: true
             })
         );
 
@@ -74,7 +74,7 @@ mongoose
         app.use("/api/analysis/", analysisRouter);
         app.use("/api/codex/", codexRouter);
         app.use("/diagnostics/", diagRouter);
-
+        
         const server = app.listen(
             env.PORT_PREFIX + env.NODE_APP_INSTANCE,
             () => {
@@ -83,11 +83,12 @@ mongoose
                         env.PORT_PREFIX + env.NODE_APP_INSTANCE
                     }`
                 );
+                initPythonShell(server);
+                initLanguageService(server);
             }
         );
 
-        initPythonShell(server);
-        initLanguageService(server);
+        
     })
     .catch((err) => {
         console.error("[Terminating] Error connecting to MongoDB: ", err);

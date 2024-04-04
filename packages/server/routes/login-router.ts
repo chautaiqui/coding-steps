@@ -96,7 +96,7 @@ loginRouter.post(
 loginRouter.post("/refreshToken", (req: any, res: any, next) => {
     const { signedCookies = {} } = req;
     const { refreshToken } = signedCookies;
-
+    console.log("refreshToken", refreshToken);
     if (refreshToken) {
         const payload = jwt.verify(
             refreshToken,
